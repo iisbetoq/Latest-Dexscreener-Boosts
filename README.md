@@ -2,16 +2,6 @@
 
 Browser viewer ringan untuk mengecek boost Solana terbaru dari Dexscreener.
 
-## Jalankan
-
-```bash
-npm run dev
-```
-
-Lalu buka:
-
-http://localhost:3000
-
 ## Step By Step
 
 1. Install Node.js kalau belum ada.
