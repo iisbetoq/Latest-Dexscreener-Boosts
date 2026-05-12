@@ -9,6 +9,8 @@ Browser viewer ringan untuk mengecek boost Solana terbaru dari Dexscreener.
 3. Jalankan `npm run dev`.
 4. Buka `http://localhost:3000`.
 5. Lihat boost Solana terbaru, urut dari `Sisa` paling kecil.
+<img width="1800" height="1102" alt="Latest-Dexscreener-Boosts" src="https://github.com/user-attachments/assets/b81f224f-ed86-49af-9c1b-c00650fd238d" />
+
 
 ## Catatan
 
