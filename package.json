@@ -1,0 +1,16 @@
+{
+  "name": "latest-dexscreener-boosts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "boost": "node boost-bot.js",
+    "boosts": "node boost-bot.js"
+  },
+  "description": "Latest Solana boost viewer from Dexscreener with countdown and GMGN links.",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
