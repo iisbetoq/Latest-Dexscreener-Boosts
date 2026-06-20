@@ -12,8 +12,6 @@ const mimeTypes = {
   '.js': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
-  '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon',
 };
 
 function contentType(filePath) {
@@ -21,21 +19,37 @@ function contentType(filePath) {
 }
 
 async function serveFile(pathname, res) {
-  const filePath = join(root, pathname === '/' ? 'index.html' : pathname.slice(1));
   try {
+    const filePath =
+      pathname === '/'
+        ? join(root, 'index.html')
+        : join(root, pathname.replace(/^\/+/, ''));
+
     const body = await readFile(filePath);
-    res.writeHead(200, { 'content-type': contentType(filePath) });
+
+    res.writeHead(200, {
+      'content-type': contentType(filePath),
+    });
+
     res.end(body);
-  } catch {
-    res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' });
-    res.end('Not found');
+  } catch (err) {
+    console.error('FILE ERROR:', err);
+
+    res.writeHead(404, {
+      'content-type': 'text/plain; charset=utf-8',
+    });
+
+    res.end(`Not found: ${pathname}`);
   }
 }
 
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://localhost:${port}`);
+
   if (url.pathname === '/health') {
-    res.writeHead(200, { 'content-type': 'application/json; charset=utf-8' });
+    res.writeHead(200, {
+      'content-type': 'application/json; charset=utf-8',
+    });
     res.end(JSON.stringify({ ok: true }));
     return;
   }
